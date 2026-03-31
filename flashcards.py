@@ -58,7 +58,7 @@ STATES = [
 ]
 
 RANKINGS_FILE = "rankings.json"
-
+TIME_LIMIT = 300
 
 
 # Creates a JSON rankings file

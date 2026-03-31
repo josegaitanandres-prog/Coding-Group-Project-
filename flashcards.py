@@ -324,7 +324,7 @@ class FlashcardApp(tk.Tk):
         tk.Button(
             self, text="Back to Welcome",
             font=("Helvetica", 10),
-            bg="#1b2e42", fg="white",
+            bg="#1b2e42", fg="black",
             relief="flat",
             command=self.show_welcome
         ).pack()

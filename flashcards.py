@@ -316,7 +316,7 @@ class FlashcardApp(tk.Tk):
         tk.Button(
             self, text="View Rankings",
             font=("Helvetica", 10),
-            bg="#1b2e42", fg="white",
+            bg="#1b2e42", fg="black",
             relief="flat",
             command=self.show_rankings
         ).pack(pady=4)

@@ -98,13 +98,22 @@ class FlashcardApp(tk.Tk):
         self.elapsed = 0
         self.prompt_keys = []
         self.answer_keys = []
+        elf.deck = []
+        self.current_index = 0
+        self.current_state = None
+        self.answer_widgets = {}
+        self.selected_map_answer = None
+        self.timer_job = None
+        self.start_time = None
 
         self.show_welcome()
-
+        
+    #General Screen Helper
     def clear_screen(self):
         for widget in self.winfo_children():
             widget.destroy()
-
+            
+    #Welcome Screen
     def show_welcome(self):
         self.clear_screen()
 
@@ -148,6 +157,7 @@ class FlashcardApp(tk.Tk):
             messagebox.showerror("Invalid Initials",
                                  "Please enter 1 to 3 letters for your initials.")
 
+    #Settings Screen
     def show_settings(self):
         self.clear_screen()
 

@@ -187,7 +187,7 @@ class FlashcardApp(tk.Tk):
                            font=("Helvetica", 11), bg="#1b2e42",
                            fg="white", selectcolor="#0d1b2a",
                            activebackground="#1b2e42").pack(anchor="w")
-
+        #Answer Options
         ans_frame = tk.LabelFrame(self, text=" What the USER ANSWERS ",
                                   font=("Helvetica", 11), bg="#1b2e42",
                                   fg="red", padx=16, pady=10)
@@ -229,6 +229,13 @@ class FlashcardApp(tk.Tk):
                   bg="red", fg="#0d1b2a", relief="flat",
                   padx=20, pady=10,
                   command=self.validate_settings).pack(pady=16)
+        tk.Button(
+            self, text="View Rankings",
+            font=("Helvetica", 10),
+            bg="#1b2e42", fg="white",
+            relief="flat",
+            command=self.show_rankings
+        ).pack(pady=4)
 
         tk.Button(self, text="Back to Welcome",
                   font=("Helvetica", 10, "bold"),

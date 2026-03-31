@@ -3,7 +3,7 @@ from tkinter import messagebox
 import json
 import os
 
-
+# Create State Dictionary
 STATES = [
     {"name": "Alabama",        "initials": "AL", "capital": "Montgomery"},
     {"name": "Alaska",         "initials": "AK", "capital": "Juneau"},
@@ -60,6 +60,8 @@ STATES = [
 RANKINGS_FILE = "rankings.json"
 
 
+
+# Creates a JSON rankings file
 def load_rankings():
     if os.path.exists(RANKINGS_FILE):
         try:
@@ -81,6 +83,9 @@ def insert_score(rankings, new_entry):
     return rankings[:10]
 
 
+
+
+# The actual Flashcard App
 class FlashcardApp(tk.Tk):
     def __init__(self):
         super().__init__()

@@ -152,7 +152,7 @@ class FlashcardApp(tk.Tk):
         frame.pack()
 
         tk.Label(
-            frame, text="Enter your initials (1-3 letters):",
+            frame, text="Enter your initials (3 letters):",
             font=("Helvetica", 12),
             bg="#162534", fg="white"
         ).pack(anchor="w")

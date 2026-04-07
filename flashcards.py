@@ -8,77 +8,319 @@ import time
 # -----------------------------
 # STATE DATA
 # -----------------------------
-# Each state stores:
-# - name
-# - initials
-# - capital
-# - row and column for the map grid
-
 STATES = {
-    "WA": {"name": "Washington", "initials": "WA", "capital": "Olympia", "row": 0, "column": 0},
-    "OR": {"name": "Oregon", "initials": "OR", "capital": "Salem", "row": 1, "column": 0},
-    "CA": {"name": "California", "initials": "CA", "capital": "Sacramento", "row": 2, "column": 0},
-    "AK": {"name": "Alaska", "initials": "AK", "capital": "Juneau", "row": 7, "column": 0},
-    "HI": {"name": "Hawaii", "initials": "HI", "capital": "Honolulu", "row": 7, "column": 2},
+    "WA": {"name": "Washington", "initials": "WA", "capital": "Olympia"},
+    "OR": {"name": "Oregon", "initials": "OR", "capital": "Salem"},
+    "CA": {"name": "California", "initials": "CA", "capital": "Sacramento"},
+    "AK": {"name": "Alaska", "initials": "AK", "capital": "Juneau"},
+    "HI": {"name": "Hawaii", "initials": "HI", "capital": "Honolulu"},
+    "ID": {"name": "Idaho", "initials": "ID", "capital": "Boise"},
+    "NV": {"name": "Nevada", "initials": "NV", "capital": "Carson City"},
+    "AZ": {"name": "Arizona", "initials": "AZ", "capital": "Phoenix"},
+    "UT": {"name": "Utah", "initials": "UT", "capital": "Salt Lake City"},
+    "MT": {"name": "Montana", "initials": "MT", "capital": "Helena"},
+    "WY": {"name": "Wyoming", "initials": "WY", "capital": "Cheyenne"},
+    "CO": {"name": "Colorado", "initials": "CO", "capital": "Denver"},
+    "NM": {"name": "New Mexico", "initials": "NM", "capital": "Santa Fe"},
+    "ND": {"name": "North Dakota", "initials": "ND", "capital": "Bismarck"},
+    "SD": {"name": "South Dakota", "initials": "SD", "capital": "Pierre"},
+    "NE": {"name": "Nebraska", "initials": "NE", "capital": "Lincoln"},
+    "KS": {"name": "Kansas", "initials": "KS", "capital": "Topeka"},
+    "OK": {"name": "Oklahoma", "initials": "OK", "capital": "Oklahoma City"},
+    "TX": {"name": "Texas", "initials": "TX", "capital": "Austin"},
+    "MN": {"name": "Minnesota", "initials": "MN", "capital": "Saint Paul"},
+    "IA": {"name": "Iowa", "initials": "IA", "capital": "Des Moines"},
+    "MO": {"name": "Missouri", "initials": "MO", "capital": "Jefferson City"},
+    "AR": {"name": "Arkansas", "initials": "AR", "capital": "Little Rock"},
+    "LA": {"name": "Louisiana", "initials": "LA", "capital": "Baton Rouge"},
+    "WI": {"name": "Wisconsin", "initials": "WI", "capital": "Madison"},
+    "IL": {"name": "Illinois", "initials": "IL", "capital": "Springfield"},
+    "MS": {"name": "Mississippi", "initials": "MS", "capital": "Jackson"},
+    "MI": {"name": "Michigan", "initials": "MI", "capital": "Lansing"},
+    "IN": {"name": "Indiana", "initials": "IN", "capital": "Indianapolis"},
+    "KY": {"name": "Kentucky", "initials": "KY", "capital": "Frankfort"},
+    "TN": {"name": "Tennessee", "initials": "TN", "capital": "Nashville"},
+    "AL": {"name": "Alabama", "initials": "AL", "capital": "Montgomery"},
+    "OH": {"name": "Ohio", "initials": "OH", "capital": "Columbus"},
+    "WV": {"name": "West Virginia", "initials": "WV", "capital": "Charleston"},
+    "VA": {"name": "Virginia", "initials": "VA", "capital": "Richmond"},
+    "NC": {"name": "North Carolina", "initials": "NC", "capital": "Raleigh"},
+    "SC": {"name": "South Carolina", "initials": "SC", "capital": "Columbia"},
+    "GA": {"name": "Georgia", "initials": "GA", "capital": "Atlanta"},
+    "FL": {"name": "Florida", "initials": "FL", "capital": "Tallahassee"},
+    "PA": {"name": "Pennsylvania", "initials": "PA", "capital": "Harrisburg"},
+    "NY": {"name": "New York", "initials": "NY", "capital": "Albany"},
+    "VT": {"name": "Vermont", "initials": "VT", "capital": "Montpelier"},
+    "NH": {"name": "New Hampshire", "initials": "NH", "capital": "Concord"},
+    "ME": {"name": "Maine", "initials": "ME", "capital": "Augusta"},
+    "MA": {"name": "Massachusetts", "initials": "MA", "capital": "Boston"},
+    "CT": {"name": "Connecticut", "initials": "CT", "capital": "Hartford"},
+    "RI": {"name": "Rhode Island", "initials": "RI", "capital": "Providence"},
+    "NJ": {"name": "New Jersey", "initials": "NJ", "capital": "Trenton"},
+    "DE": {"name": "Delaware", "initials": "DE", "capital": "Dover"},
+    "MD": {"name": "Maryland", "initials": "MD", "capital": "Annapolis"},
+}
 
-    "ID": {"name": "Idaho", "initials": "ID", "capital": "Boise", "row": 1, "column": 1},
-    "NV": {"name": "Nevada", "initials": "NV", "capital": "Carson City", "row": 2, "column": 1},
-    "AZ": {"name": "Arizona", "initials": "AZ", "capital": "Phoenix", "row": 3, "column": 1},
-    "UT": {"name": "Utah", "initials": "UT", "capital": "Salt Lake City", "row": 2, "column": 2},
-    "MT": {"name": "Montana", "initials": "MT", "capital": "Helena", "row": 0, "column": 2},
-    "WY": {"name": "Wyoming", "initials": "WY", "capital": "Cheyenne", "row": 1, "column": 2},
-    "CO": {"name": "Colorado", "initials": "CO", "capital": "Denver", "row": 2, "column": 3},
-    "NM": {"name": "New Mexico", "initials": "NM", "capital": "Santa Fe", "row": 3, "column": 2},
-
-    "ND": {"name": "North Dakota", "initials": "ND", "capital": "Bismarck", "row": 0, "column": 3},
-    "SD": {"name": "South Dakota", "initials": "SD", "capital": "Pierre", "row": 1, "column": 3},
-    "NE": {"name": "Nebraska", "initials": "NE", "capital": "Lincoln", "row": 2, "column": 4},
-    "KS": {"name": "Kansas", "initials": "KS", "capital": "Topeka", "row": 3, "column": 4},
-    "OK": {"name": "Oklahoma", "initials": "OK", "capital": "Oklahoma City", "row": 4, "column": 4},
-    "TX": {"name": "Texas", "initials": "TX", "capital": "Austin", "row": 5, "column": 4},
-
-    "MN": {"name": "Minnesota", "initials": "MN", "capital": "Saint Paul", "row": 0, "column": 4},
-    "IA": {"name": "Iowa", "initials": "IA", "capital": "Des Moines", "row": 1, "column": 5},
-    "MO": {"name": "Missouri", "initials": "MO", "capital": "Jefferson City", "row": 2, "column": 5},
-    "AR": {"name": "Arkansas", "initials": "AR", "capital": "Little Rock", "row": 3, "column": 5},
-    "LA": {"name": "Louisiana", "initials": "LA", "capital": "Baton Rouge", "row": 5, "column": 5},
-
-    "WI": {"name": "Wisconsin", "initials": "WI", "capital": "Madison", "row": 0, "column": 5},
-    "IL": {"name": "Illinois", "initials": "IL", "capital": "Springfield", "row": 1, "column": 6},
-    "MS": {"name": "Mississippi", "initials": "MS", "capital": "Jackson", "row": 4, "column": 6},
-    "MI": {"name": "Michigan", "initials": "MI", "capital": "Lansing", "row": 0, "column": 6},
-    "IN": {"name": "Indiana", "initials": "IN", "capital": "Indianapolis", "row": 1, "column": 7},
-    "KY": {"name": "Kentucky", "initials": "KY", "capital": "Frankfort", "row": 2, "column": 7},
-    "TN": {"name": "Tennessee", "initials": "TN", "capital": "Nashville", "row": 3, "column": 7},
-    "AL": {"name": "Alabama", "initials": "AL", "capital": "Montgomery", "row": 4, "column": 7},
-
-    "OH": {"name": "Ohio", "initials": "OH", "capital": "Columbus", "row": 1, "column": 8},
-    "WV": {"name": "West Virginia", "initials": "WV", "capital": "Charleston", "row": 2, "column": 8},
-    "VA": {"name": "Virginia", "initials": "VA", "capital": "Richmond", "row": 3, "column": 8},
-    "NC": {"name": "North Carolina", "initials": "NC", "capital": "Raleigh", "row": 4, "column": 8},
-    "SC": {"name": "South Carolina", "initials": "SC", "capital": "Columbia", "row": 5, "column": 8},
-    "GA": {"name": "Georgia", "initials": "GA", "capital": "Atlanta", "row": 5, "column": 7},
-    "FL": {"name": "Florida", "initials": "FL", "capital": "Tallahassee", "row": 6, "column": 8},
-
-    "PA": {"name": "Pennsylvania", "initials": "PA", "capital": "Harrisburg", "row": 1, "column": 9},
-    "NY": {"name": "New York", "initials": "NY", "capital": "Albany", "row": 0, "column": 9},
-    "VT": {"name": "Vermont", "initials": "VT", "capital": "Montpelier", "row": 0, "column": 10},
-    "NH": {"name": "New Hampshire", "initials": "NH", "capital": "Concord", "row": 0, "column": 11},
-    "ME": {"name": "Maine", "initials": "ME", "capital": "Augusta", "row": 0, "column": 12},
-    "MA": {"name": "Massachusetts", "initials": "MA", "capital": "Boston", "row": 1, "column": 10},
-    "CT": {"name": "Connecticut", "initials": "CT", "capital": "Hartford", "row": 1, "column": 11},
-    "RI": {"name": "Rhode Island", "initials": "RI", "capital": "Providence", "row": 1, "column": 12},
-    "NJ": {"name": "New Jersey", "initials": "NJ", "capital": "Trenton", "row": 2, "column": 9},
-    "DE": {"name": "Delaware", "initials": "DE", "capital": "Dover", "row": 2, "column": 10},
-    "MD": {"name": "Maryland", "initials": "MD", "capital": "Annapolis", "row": 2, "column": 11},
+# -----------------------------
+# REAL MAP BOUNDARIES
+# -----------------------------
+state_boundaries = {
+    "Alabama": [
+        (476,280), (490,279), (500,279), (510,280), (513,295),
+        (517,307), (521,318), (521,326), (523,339), (511,341),
+        (499,342), (488,342), (493,352), (488,353), (485,348),
+        (482,352), (479,352), (477,337), (476,318), (476,306),
+        (477,291), (476,280)],
+    "Alaska": [
+        (144,400),(146,469),(150,468),(158,474),(166,472),(185,500),
+        (180,503),(173,491),(172,495),(169,490),(168,484),(163,483),
+        (144,473),(132,469),(125,463),(117,463),(106,463),(97,472),
+        (97,478),(86,484),(71,492),(65,491),(73,483),(80,476),(73,469),
+        (66,468),(67,462),(61,460),(60,455),(57,446),(64,436),(78,438),
+        (79,427),(67,424),(65,419),(63,414),(73,412),(77,413),(77,417),
+        (84,416),(79,408),(78,404),(75,399),(74,395),(85,394),(87,388),
+        (103,384),(107,385),(115,391),(124,393),(135,397),(140,396),
+        (144,400)],
+    "Arizona": [
+        (152,233), (168,235), (188,238), (204,240), (212,241), (210,259),
+        (208,283), (204,301), (202,313), (200,328), (199,331), (183,328),
+        (174,326), (158,317), (141,307), (130,301), (128,298), (128,296),
+        (131,295), (131,291), (131,287), (134,283), (136,280), (138,277),
+        (141,274), (139,267), (139,264), (138,258), (139,252), (140,246),
+        (142,243), (145,246), (149,244), (149,240), (151,233)],
+    "Arkansas": [
+        (393,260),(444,259),(450,260),(447,265),(454,265),(449,280),
+        (446,286),(446,291),(442,293),(437,307),(439,313),(400,316),
+        (401,307),(395,304),(393,260)],
+    "California": [
+        (51,126), (72,132), (90,137), (97,140), (94,156), (91,164), (91,171),
+        (88,180), (87,186), (91,192), (101,207), (113,225), (126,244), (137,259),
+        (138,268), (141,274), (136,277), (135,281), (132,285), (131,290),
+        (132,294), (129,296), (112,295), (100,293), (97,284), (94,276),
+        (90,272), (88,272), (86,266), (81,266), (75,258), (62,251), (62,245),
+        (61,240), (58,231), (54,222), (53,217), (55,212), (52,209), (52,201),
+        (53,197), (48,191), (47,184), (44,177), (43,170), (45,165), (44,156),
+        (42,149), (48,140), (51,126)],
+    "Colorado": [
+        (221,180), (238,181), (256,183), (270,185), (280,186),
+        (291,187), (303,189), (303,202), (302,214), (301,229),
+        (300,240), (299,250), (289,251), (278,249), (266,248),
+        (254,247), (241,245), (228,243), (213,242), (214,230),
+        (216,218), (217,208), (219,196), (221,180)],
+    "Connecticut":[
+        (636,142),(653,139),(656,146),(637,155),(636,142)],
+    "Delaware": [
+        (629,201),(623,201),(617,183),(619,182),(625,193),(629,201)],
+    "Florida":[
+        (570,338),(576,350),(584,363),(590,370),(591,376),(599,389),
+        (601,404),(601,413),(599,420),(591,420),(585,414),(579,409),
+        (576,405),(573,399),(568,398),(563,389),(564,383),(559,382),
+        (559,371),(557,365),(554,364),(544,356),(539,352),(534,354),
+        (525,358),(516,354),(507,350),(499,350),(493,349),(489,342),
+        (521,339),(525,343),(559,342),(562,344),(563,336),(570,338)
+        ],
+    "Georgia":[
+        (538,274),(521,275),(508,278),(514,298),(519,313),(522,316),
+        (520,321),(524,338),(527,344),(558,342),(564,344),(565,336),
+        (571,337),(571,327),(575,316),(566,301),(553,291),(547,284),
+        (538,280),(538,274)],
+    "Hawaii": [(224,444), (221,456), (233,456), (236,446), (224,444),
+        (252,460), (255,466), (262,466), (258,457), (252,460), (272,466),
+        (269,469), (278,471), (278,468), (273,466), (287,478), (294,479),
+        (292,474), (287,473), (282,472), (282,476), (287,477), (298,486),
+        (296,493), (294,496), (296,504), (298,511), (304,508), (312,503),
+        (316,499), (311,494), (306,489), (298,486)],
+    "Idaho": [
+        (155,40), (164,42), (164,52), (165,61), (166,68), (171,75),
+        (173,80), (176,82), (175,87), (173,92), (172,95), (174,100),
+        (179,96), (179,103), (181,108), (183,113), (186,117), (190,117),
+        (195,118), (201,118), (203,116), (205,119), (205,134), (203,144),
+        (200,159), (184,157), (167,155), (150,150), (139,148), (133,146),
+        (134,136), (136,128), (138,120), (140,113), (138,109), (142,103),
+        (148,95), (150,90), (147,85), (145,80), (149,71), (152,60),
+        (153,50), (155,39)],
+    "Iowa": [
+        (372,151),(428,149),(433,159),(438,163),(442,170),(440,177),
+        (434,180),(435,187),(429,195),(379,195),(377,182),(370,166),
+        (372,151)],
+    "Illinois": [
+        (439,164),(468,161),(476,173),(478,213),(478,223),(473,229),
+        (473,235),(472,240),(467,245),(459,247),(457,241),(445,231),
+        (446,227),(447,222),(440,219),(432,207),(428,201),(428,195),
+        (434,189),(435,179),(441,177),(443,170),(439,164)],
+    "Indiana": [
+        (476,174),(483,171),(496,170),(506,170),(511,210),(511,215),
+        (507,218),(498,229),(494,229),(493,233),(487,233),(475,234),
+        (476,227),(479,220),(478,216),(476,174)],
+    "Kansas": [
+        (303,202), (320,203), (336,204), (352,205), (365,205),
+        (383,205), (388,209), (386,213), (392,219), (392,230), (392,240),
+        (392,253), (376,253), (357,253), (338,252), (321,251), (310,251),
+        (300,249), (301,236), (301,222), (302,211), (302,202)],
+    "Kentucky": [
+        (460,257),(474,257),(474,254),(533,249),(548,233),(543,227),
+        (538,218),(535,213),(534,218),(526,217),(520,215),(515,211),
+        (511,211),(510,216),(507,218),(499,229),(493,230),(493,233),
+        (488,233),(475,235),(470,242),(469,247),(461,247),(460,257)],
+    "Louisiana":[
+        (403,318),(438,315),(441,326),(436,335),(435,345),(454,345),
+        (458,345),(462,355),(456,355),(452,358),(457,358),(461,360),
+        (466,359),(468,362),(464,366),(471,372),(468,375),(460,369),
+        (458,373),(451,373),(447,374),(437,367),(431,365),(429,369),
+        (419,368),(412,366),(405,366),(406,356),(408,348),(405,339),
+        (402,331),(403,318)],
+    "Maryland": [
+        (573,192),(615,184),(616,188),(611,192),(612,203),(614,208),
+        (603,207),(604,201),(597,196),(590,189),(587,192),(580,195),
+        (575,198),(573,192)],
+    "Massachusetts":[
+        (636,131),(643,129),(653,127),(661,123),(662,131),(670,135),
+        (677,135),(669,140),(665,140),(658,136),(637,140),(636,131)],
+    "Maine": [
+        (662,118),(664,106),(670,102),(675,99),(675,94),(684,88),(688,86),
+        (693,80), (691,74),(688,74),(687,70),(682,67),(677,52),(672,46),
+        (663,48),(660,46), (656,53),(654,68),(653,78),(649,85),(658,115),
+        (662,118)],
+    "Michigan": [
+        (522,167),(506,171),(483,171),(489,159),(487,149),(484,140),
+        (485,128),(491,120),(497,114),(497,108),(499,104),(489,103),
+        (482,107),(475,108),(469,117),(466,108),(444,102),(440,98),
+        (459,84),(462,86),(458,92),(470,95), (476,99),(493,92),(497,96),
+        (505,96),(509,101),(499,103),(506,108),(515,112),(517,121),
+        (518,126),(513,133),(513,138),(520,136),(524,132),(528,137),
+        (529,150),(527,155),(522,167)],
+    "Minnesota":[
+        (363,63),(382,62),(384,57),(387,57),(389,65),(399,70),(405,67),
+        (415,73),(425,76),(430,73),(440,75),(419,95),(415,103),(413,110),
+        (409,113),(412,120),(413,129),(429,143),(428,148),(371,148),
+        (371,122),(367,116),(370,111),(366,82),(363,79),(363,63)],
+    "Mississippi":[
+        (476,281),(475,313),(476,334),(478,351),(462,355),(458,345),
+        (435,344),(441,326),(438,315),(438,308),(440,298),(444,291),
+        (450,281),(476,281)],
+    "Missouri": [
+        (379,196),(428,195),(429,202),(436,210),(441,217),(446,222),
+        (444,229),(451,235),(458,244),(460,248),(459,255),(454,264),
+        (449,264),(449,257),(394,259),(392,219),(386,212),(389,208),
+        (384,204),(379,196)],
+    "Montana":[
+        (166,43), (197,48), (232,53), (260,57), (290,61), (287,106),
+        (284,122), (209,114), (204,118), (188,117), (182,111), (179,98),
+        (174,98), (176,82), (170,74), (165,65), (165,61), (163,53),
+        (166,42), (166,43)],
+    "Nebraska":[
+        (285,155),(327,157),(344,156),(348,159),(353,159),(355,162),
+        (362,162),(367,164),(376,183),(378,195),(383,204),(304,202),
+        (303,188),(280,184),(285,155)],
+    "Nevada": [
+        (98,140),(166,155),(152,233),(148,247),(142,244),(138,260),(95,197),
+        (92,192),(87,186),(98,140)],
+    "New Mexico": [
+        (213,242),(250,247),(287,251),(284,286),
+        (282,318),(281,328),(234,324),(234,327),
+        (214,325),(213,332),(200,329),(213,242)],
+    "New Hampshire": [
+        (649,87),(658,114),(662,117),(661,120),(655,124),(644,126),
+        (642,114),(643,102),(646,98),(644,90),(649,87)],
+    "New Jersey": [
+        (624,155),(633,159),(632,165),(637,174),(632,191),(622,186),
+        (620,182),(626,174),(620,167),(624,155)],
+    "New York": [
+        (626,96),(631,117),(635,129),(637,140),(638,153),(636,158),
+        (620,153),(616,148),(569,156),(564,156),(561,154),(570,144),
+        (570,137),(578,133),(584,133),(596,129),(599,124),(596,117),
+        (601,110),(609,100),(626,96)],
+    "North Carolina": [
+        (624,234),(609,236),(597,239),(586,242),(574,242),(563,244),
+        (550,246),(550,251),(548,254),(542,257),(537,260),(533,264),
+        (529,266),(524,268),(522,271),(522,274),(537,273),(547,270),
+        (553,268),(560,267),(567,267),(570,271),(583,270),(600,281),
+        (607,278),(609,273),(617,264),(623,263),(626,258),(622,255),
+        (621,251),(625,251),(629,249),(629,244),(623,241),(628,238),
+        (624,234)],
+    "North Dakota": [
+        (291,61),(318,62),(339,63),(361,63),(363,80),(365,84),(368,110),
+        (289,109),(291,61)],
+    "Ohio": [
+        (506,170),(523,167),(532,172),(543,167),(546,163),(555,159),
+        (558,183),(557,195),(550,201),(547,209),(545,209),(541,216),
+        (535,214),(527,216),(518,212),(511,211),(506,170)],
+    "Oklahoma": [
+        (288,251),(299,250),(341,252),(391,253),(394,261),
+        (395,271),(395,282),(395,293),(394,304),(385,303),
+        (371,303),(364,303),(355,301),(351,302),
+        (347,298),(338,297),(332,293),(325,290),(323,261),
+        (289,259),(288,251)],
+    "Oregon":[
+        (75,62),(83,68),(84,76),(96,77),(103,80),(113,79),(127,81),(146,84),
+        (151,91),(140,105),(139,110),(141,114),(137,119),(132,145),(50,125),
+        (51,113),(63,90),(69,73),(75,62)],
+    "Pennsylvania" : [
+        (562,155),(565,158),(615,147),(621,154),(620,167),(627,174),
+        (621,179),(615,184),(591,188),(562,192),(560,185),(555,160),
+        (562,155)],
+    "Rhode Island": [
+        (656,139),(657,136),(663,142),(657,146),(656,139)],
+    "South Carolina":[
+        (600,280),(585,270),(570,271),(564,267),(556,268),(549,268),
+        (539,273),(538,278),(546,284),(553,291),(562,299),(566,304),
+        (573,314),(575,314),(585,303),(593,295),(595,287),(600,280)],
+    "South Dakota": [
+        (288,107),(367,113),(365,115),(370,120),(372,149),(368,165),
+        (362,161),(356,163),(347,156),(284,155),(287,107)],
+    "Tennessee": [
+        (550,247),(536,248),(529,250),(507,252),(491,253),(476,253),
+        (474,256),(460,256),(451,276),(450,281),(476,280),(509,279),
+        (519,275),(522,269),(528,265),(542,257),(550,247)],
+    "Texas": [
+        (289,259),(325,260),(324,289),
+        (329,294),(334,294),(339,298),(346,299),(352,302),
+        (358,302),(367,302),(372,304),(381,302),(388,302),
+        (394,306),(400,308),(400,315),(401,329),(406,340),
+        (408,349),(406,354),(406,360),(404,366),(398,369),
+        (392,369),(389,372),(387,376),(383,381),(375,385),
+        (370,385),(367,388),(363,393),(359,397),(356,401),
+        (355,408),(354,416),(356,422),(357,427),(350,425),
+        (335,420),(328,411),(326,401),(314,385),(308,374),
+        (302,366),(293,365),(285,365),(280,371),(277,375),
+        (265,369),(257,361),(254,350),(234,325),(280,328),
+        (289,259)],
+    "Utah": [
+        (168,155),(199,160),(199,175),(221,179),(212,240),(153,231),
+        (168,155)],
+    "Vermont": [
+        (625,95),(644,91),(647,99),(644,102),(642,117),(642,127),(635,130),
+        (634,121),(630,117),(625,95)],
+    "Virginia": [
+        (625,233),(591,241),(552,246),(535,245),(548,233),(554,235),
+        (558,233),(568,228),(576,212),(579,212),(582,205),(588,195),
+        (593,195),(597,196),(605,200),(603,206),(615,210),(619,221),
+        (620,227),(625,227),(625,233)],
+    "Washington":[
+        (98,24),(154,41),(146,80),(146,84),(124,81),(110,80),(101,79),
+        (84,75),(83,68),(74,61),(76,41),(74,28),(95,38),(93,48),(99,40),
+        (98,24)],
+    "West Virginia": [
+        (559,187), (560,194), (573,193), (575,197), (584,194), (591,191),
+        (596,194), (593,196), (589,196), (587,200), (584,203), (582,207),
+        (579,211), (576,210), (572,215), (571,223), (568,227), (563,232),
+        (557,234), (551,234), (542,227), (539,219), (542,213), (545,209),
+        (548,203), (553,201), (556,197), (559,187)],
+     "Wisconsin": [
+         (470,161),(440,163),(433,159),(431,150),(430,148),(429,144),
+         (412,129),(411,118),(409,113),(414,108),(416,98),(430,94),
+         (433,98),(438,98),(441,102),(465,110),(468,118),(465,127),
+         (472,124),(469,136),(467,149),(470,161)],
+    "Wyoming": [
+        (210,114),(238,118),(260,121),(284,125),(283,152),(281,173),
+        (280,185),(232,180),(220,179),(202,176),(199,174),(198,170),
+        (200,161),(202,149),(206,118),(210,114)
+    ]
 }
 
 RANKINGS_FILE = "rankings.json"
 TIME_LIMIT = 300
 
-# -----------------------------
-# RANKINGS FUNCTIONS
-# -----------------------------
 def load_rankings():
     if os.path.exists(RANKINGS_FILE):
         try:
@@ -97,17 +339,13 @@ def insert_score(rankings, new_entry):
     rankings.sort(key=lambda x: (-x["score"], x["elapsed"]))
     return rankings[:10]
 
-# -----------------------------
-# MAIN APP
-# -----------------------------
 class FlashcardApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("US States Flashcards")
-        self.geometry("1000x700")
+        self.geometry("1180x760")
         self.configure(bg="#0d1b2a")
 
-        # Session variables
         self.player_initials = ""
         self.score = 0.0
         self.elapsed = 0
@@ -120,19 +358,15 @@ class FlashcardApp(tk.Tk):
         self.selected_map_answer = None
         self.timer_job = None
         self.start_time = None
+        self.canvas = None
+        self.state_items = {}
 
         self.show_welcome()
 
-    # -----------------------------
-    # GENERAL SCREEN HELPER
-    # -----------------------------
     def clear_screen(self):
         for widget in self.winfo_children():
             widget.destroy()
 
-    # -----------------------------
-    # WELCOME SCREEN
-    # -----------------------------
     def show_welcome(self):
         self.clear_screen()
 
@@ -152,7 +386,7 @@ class FlashcardApp(tk.Tk):
         frame.pack()
 
         tk.Label(
-            frame, text="Enter your initials (3 letters):",
+            frame, text="Enter your initials (1-3 letters):",
             font=("Helvetica", 12),
             bg="#162534", fg="white"
         ).pack(anchor="w")
@@ -185,18 +419,15 @@ class FlashcardApp(tk.Tk):
 
     def validate_initials(self):
         initials = self.initials_var.get().strip().upper()
-        if len(initials) == 3 and initials.isalpha():
+        if 1 <= len(initials) <= 3 and initials.isalpha():
             self.player_initials = initials
             self.show_settings()
         else:
             messagebox.showerror(
                 "Invalid Initials",
-                "Please enter exactly 3 letters for your initials."
+                "Please enter 1 to 3 letters for your initials."
             )
 
-    # -----------------------------
-    # SETTINGS SCREEN
-    # -----------------------------
     def show_settings(self):
         self.clear_screen()
 
@@ -212,7 +443,6 @@ class FlashcardApp(tk.Tk):
             bg="#0d1b2a", fg="#3ec9a7"
         ).pack(pady=(0, 16))
 
-        # SHOW options
         show_frame = tk.LabelFrame(
             self, text=" What to SHOW on each card ",
             font=("Helvetica", 11),
@@ -242,7 +472,6 @@ class FlashcardApp(tk.Tk):
                 activebackground="#1b2e42"
             ).pack(anchor="w")
 
-        # ANSWER options
         ans_frame = tk.LabelFrame(
             self, text=" What the USER ANSWERS ",
             font=("Helvetica", 11),
@@ -272,7 +501,6 @@ class FlashcardApp(tk.Tk):
                 activebackground="#1b2e42"
             ).pack(anchor="w")
 
-        # Answer mode
         mode_frame = tk.LabelFrame(
             self, text=" Answer Mode ",
             font=("Helvetica", 11),
@@ -316,7 +544,7 @@ class FlashcardApp(tk.Tk):
         tk.Button(
             self, text="View Rankings",
             font=("Helvetica", 10),
-            bg="#1b2e42", fg="black",
+            bg="#1b2e42", fg="white",
             relief="flat",
             command=self.show_rankings
         ).pack(pady=4)
@@ -324,7 +552,7 @@ class FlashcardApp(tk.Tk):
         tk.Button(
             self, text="Back to Welcome",
             font=("Helvetica", 10),
-            bg="#1b2e42", fg="black",
+            bg="#1b2e42", fg="white",
             relief="flat",
             command=self.show_welcome
         ).pack()
@@ -376,16 +604,12 @@ class FlashcardApp(tk.Tk):
         self.answer_keys = answer_keys
         self.start_session()
 
-    # -----------------------------
-    # SESSION SETUP
-    # -----------------------------
     def start_session(self):
         self.score = 0.0
         self.elapsed = 0
         self.current_index = 0
         self.selected_map_answer = None
 
-        # Copy all state codes and shuffle them
         self.deck = list(STATES.keys())
         random.shuffle(self.deck)
 
@@ -397,9 +621,6 @@ class FlashcardApp(tk.Tk):
         self.show_flashcard()
         self.update_timer()
 
-    # -----------------------------
-    # TIMER
-    # -----------------------------
     def update_timer(self):
         self.elapsed = int(time.time() - self.start_time)
 
@@ -415,15 +636,11 @@ class FlashcardApp(tk.Tk):
 
         self.timer_job = self.after(1000, self.update_timer)
 
-    # -----------------------------
-    # FLASHCARD SCREEN
-    # -----------------------------
     def show_flashcard(self):
         self.clear_screen()
         self.answer_widgets = {}
         self.selected_map_answer = None
 
-        # Stop if all cards are done
         if self.current_index >= len(self.deck):
             self.finish_session()
             return
@@ -463,7 +680,7 @@ class FlashcardApp(tk.Tk):
         left_frame.pack(side="left", fill="both", expand=True, padx=10)
 
         right_frame = tk.Frame(main_frame, bg="#162534", padx=15, pady=15)
-        right_frame.pack(side="right", fill="both", expand=True, padx=10)
+        right_frame.pack(side="right", fill="y", padx=10)
 
         tk.Label(
             left_frame,
@@ -472,13 +689,12 @@ class FlashcardApp(tk.Tk):
             bg="#162534", fg="#e8a020"
         ).pack(pady=(0, 12))
 
-        # Show selected prompt items
         if "map" in self.prompt_keys or "map" in self.answer_keys:
             self.canvas = tk.Canvas(
                 left_frame,
-                width=700,
-                height=350,
-                bg="white",
+                width=760,
+                height=560,
+                bg="#eaf4ff",
                 highlightthickness=0
             )
             self.canvas.pack(pady=10)
@@ -521,7 +737,6 @@ class FlashcardApp(tk.Tk):
             bg="#162534", fg="#e8a020"
         ).pack(pady=(0, 12))
 
-        # Create answer widgets
         for key in self.answer_keys:
             if key == "map":
                 tk.Label(
@@ -580,30 +795,40 @@ class FlashcardApp(tk.Tk):
             command=self.finish_session
         ).pack(side="left", padx=8)
 
-    # -----------------------------
-    # DRAW MAP
-    # -----------------------------
+    def get_scaled_points(self, points, scale=1.15, x_offset=35, y_offset=25):
+        scaled = []
+        for x, y in points:
+            new_x = x * scale + x_offset
+            new_y = y * scale + y_offset
+            scaled.append((new_x, new_y))
+        return scaled
+
     def draw_map(self, highlight_code=None, selected_code=None):
         self.canvas.delete("all")
+        self.state_items = {}
 
-        tile_size = 40
-        gap = 4
-        left_margin = 40
-        top_margin = 20
-
-        self.state_boxes = {}
+        self.canvas.create_rectangle(
+            15, 15, 745, 545,
+            fill="#f8fbff",
+            outline="#c7d9ea",
+            width=2
+        )
 
         for code, info in STATES.items():
-            row = info["row"]
-            column = info["column"]
+            state_name = info["name"]
 
-            x1 = left_margin + column * (tile_size + gap)
-            y1 = top_margin + row * (tile_size + gap)
-            x2 = x1 + tile_size
-            y2 = y1 + tile_size
+            if state_name not in state_boundaries:
+                continue
+
+            points = self.get_scaled_points(
+                state_boundaries[state_name],
+                scale=1.15,
+                x_offset=35,
+                y_offset=25
+            )
 
             fill_color = "#8ecae6"
-            outline_color = "#3a506b"
+            outline_color = "#355070"
 
             if code == highlight_code:
                 fill_color = "#ffb703"
@@ -613,36 +838,79 @@ class FlashcardApp(tk.Tk):
                 fill_color = "#90be6d"
                 outline_color = "#2d6a4f"
 
-            rect_id = self.canvas.create_rectangle(
-                x1, y1, x2, y2,
+            flat_points = []
+            for x, y in points:
+                flat_points.extend([x, y])
+
+            shadow_points = []
+            for x, y in points:
+                shadow_points.extend([x + 2, y + 2])
+
+            self.canvas.create_polygon(
+                shadow_points,
+                fill="#d9e6f2",
+                outline="",
+                smooth=False
+            )
+
+            poly = self.canvas.create_polygon(
+                flat_points,
                 fill=fill_color,
                 outline=outline_color,
-                width=2
+                width=2,
+                smooth=False,
+                tags=("state", code)
             )
 
-            self.canvas.create_text(
-                (x1 + x2) / 2,
-                (y1 + y2) / 2,
-                text=code,
-                font=("Arial", 9, "bold")
-            )
+            if code == highlight_code:
+                self.canvas.create_polygon(
+                    flat_points,
+                    fill="",
+                    outline="red",
+                    width=3,
+                    smooth=False
+                )
 
-            self.state_boxes[rect_id] = code
+            min_x = min(x for x, y in points)
+            max_x = max(x for x, y in points)
+            min_y = min(y for x, y in points)
+            max_y = max(y for x, y in points)
+
+            width = max_x - min_x
+            height = max_y - min_y
+
+            if width >= 22 and height >= 14:
+                cx = sum(x for x, y in points) / len(points)
+                cy = sum(y for x, y in points) / len(points)
+
+                font_size = 8
+                if width > 55 and height > 28:
+                    font_size = 9
+
+                self.canvas.create_text(
+                    cx,
+                    cy,
+                    text=code,
+                    font=("Arial", font_size, "bold"),
+                    fill="#0d1b2a"
+                )
+
+            self.state_items[poly] = code
 
     def map_click(self, event):
-        clicked_items = self.canvas.find_overlapping(event.x, event.y, event.x, event.y)
+        items = self.canvas.find_overlapping(event.x, event.y, event.x, event.y)
 
-        for item in clicked_items:
-            if item in self.state_boxes:
-                self.selected_map_answer = self.state_boxes[item]
-                self.draw_map(
-                    highlight_code=self.deck[self.current_index] if "map" in self.prompt_keys else None,
-                    selected_code=self.selected_map_answer
-                )
-                break
+        for item in items:
+            tags = self.canvas.gettags(item)
+            for tag in tags:
+                if tag in STATES:
+                    self.selected_map_answer = tag
+                    self.draw_map(
+                        highlight_code=self.deck[self.current_index] if "map" in self.prompt_keys else None,
+                        selected_code=self.selected_map_answer
+                    )
+                    return
 
-
-    # CHOICES FOR DROPDOWN
     def make_choices(self, key, current_code):
         correct_state = STATES[current_code]
 
@@ -652,7 +920,7 @@ class FlashcardApp(tk.Tk):
         elif key == "initials":
             correct_answer = correct_state["initials"]
             all_answers = [STATES[code]["initials"] for code in STATES]
-        else:  # capital
+        else:
             correct_answer = correct_state["capital"]
             all_answers = [STATES[code]["capital"] for code in STATES]
 
@@ -662,9 +930,6 @@ class FlashcardApp(tk.Tk):
         random.shuffle(choices)
         return choices
 
-    # -----------------------------
-    # CHECK ANSWER
-    # -----------------------------
     def check_answer(self):
         current_code = self.deck[self.current_index]
         current_state = STATES[current_code]
@@ -675,7 +940,6 @@ class FlashcardApp(tk.Tk):
                     self.score += 1 / 6
                 continue
 
-            # Get user's answer
             if self.answer_mode.get() == "text":
                 user_answer = self.answer_widgets[key].get().strip()
                 points = 2 / 6
@@ -683,7 +947,6 @@ class FlashcardApp(tk.Tk):
                 user_answer = self.answer_widgets[key].get().strip()
                 points = 1 / 6
 
-            # Get correct answer
             if key == "name":
                 correct_answer = current_state["name"]
             elif key == "initials":
@@ -697,9 +960,6 @@ class FlashcardApp(tk.Tk):
         self.current_index += 1
         self.show_flashcard()
 
-    # -----------------------------
-    # FINISH SESSION
-    # -----------------------------
     def finish_session(self):
         if self.timer_job:
             self.after_cancel(self.timer_job)
@@ -719,9 +979,6 @@ class FlashcardApp(tk.Tk):
 
         self.show_rankings()
 
-    # -----------------------------
-    # RANKINGS SCREEN
-    # -----------------------------
     def show_rankings(self):
         self.clear_screen()
 
@@ -793,8 +1050,5 @@ class FlashcardApp(tk.Tk):
             command=self.show_settings
         ).pack(pady=4)
 
-# -----------------------------
-# RUN APP
-# -----------------------------
 app = FlashcardApp()
 app.mainloop()

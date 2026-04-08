@@ -1,3 +1,4 @@
+
 import tkinter as tk
 from tkinter import messagebox
 import json
@@ -587,7 +588,7 @@ class FlashcardApp(tk.Tk):
         tk.Button(
             self, text="View Rankings",
             font=("Helvetica", 10),
-            bg="#1b2e42", fg="white",
+            bg="#1b2e42", fg="Black",
             relief="flat",
             command=self.show_rankings
         ).pack(pady=4)
@@ -595,7 +596,7 @@ class FlashcardApp(tk.Tk):
         tk.Button(
             self, text="Back to Welcome",
             font=("Helvetica", 10),
-            bg="#1b2e42", fg="white",
+            bg="#1b2e42", fg="Black",
             relief="flat",
             command=self.show_welcome
         ).pack()
@@ -840,7 +841,7 @@ class FlashcardApp(tk.Tk):
             button_frame,
             text="End Session",
             font=("Helvetica", 12),
-            bg="#1b2e42", fg="white",
+            bg="#1b2e42", fg="Black",
             relief="flat",
             padx=18, pady=8,
             command=self.finish_session
@@ -1275,7 +1276,7 @@ class FlashcardApp(tk.Tk):
         tk.Button(
             self, text="Go to Settings",
             font=("Helvetica", 11),
-            bg="#1b2e42", fg="white",
+            bg="#1b2e42", fg="Black",
             relief="flat",
             padx=16, pady=8,
             command=self.show_settings

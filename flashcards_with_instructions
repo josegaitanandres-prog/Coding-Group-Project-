@@ -1,3 +1,7 @@
+
+# -----------------------------
+# IMPORTS
+# -----------------------------
 import tkinter as tk
 from tkinter import messagebox
 import json
@@ -75,10 +79,14 @@ state_boundaries = {
         (144, 400), (146, 469), (150, 468), (158, 474), (166, 472), (185, 500),
         (180, 503), (173, 491), (172, 495), (169, 490), (168, 484), (163, 483),
         (144, 473), (132, 469), (125, 463), (117, 463), (106, 463), (97, 472),
-        (97, 478), (86, 484), (71, 492), (65, 491), (73, 483), (80, 476), (73, 469),
-        (66, 468), (67, 462), (61, 460), (60, 455), (57, 446), (64, 436), (78, 438),
-        (79, 427), (67, 424), (65, 419), (63, 414), (73, 412), (77, 413), (77, 417),
-        (84, 416), (79, 408), (78, 404), (75, 399), (74, 395), (85, 394), (87, 388),
+        (97, 478), (86, 484), (71, 492), (65,
+                                          491), (73, 483), (80, 476), (73, 469),
+        (66, 468), (67, 462), (61, 460), (60,
+                                          455), (57, 446), (64, 436), (78, 438),
+        (79, 427), (67, 424), (65, 419), (63,
+                                          414), (73, 412), (77, 413), (77, 417),
+        (84, 416), (79, 408), (78, 404), (75,
+                                          399), (74, 395), (85, 394), (87, 388),
         (103, 384), (107, 385), (115, 391), (124, 393), (135, 397), (140, 396),
         (144, 400)],
     "Arizona": [
@@ -93,13 +101,18 @@ state_boundaries = {
         (446, 286), (446, 291), (442, 293), (437, 307), (439, 313), (400, 316),
         (401, 307), (395, 304), (393, 260)],
     "California": [
-        (51, 126), (72, 132), (90, 137), (97, 140), (94, 156), (91, 164), (91, 171),
-        (88, 180), (87, 186), (91, 192), (101, 207), (113, 225), (126, 244), (137, 259),
+        (51, 126), (72, 132), (90, 137), (97,
+                                          140), (94, 156), (91, 164), (91, 171),
+        (88, 180), (87, 186), (91, 192), (101,
+                                          207), (113, 225), (126, 244), (137, 259),
         (138, 268), (141, 274), (136, 277), (135, 281), (132, 285), (131, 290),
         (132, 294), (129, 296), (112, 295), (100, 293), (97, 284), (94, 276),
-        (90, 272), (88, 272), (86, 266), (81, 266), (75, 258), (62, 251), (62, 245),
-        (61, 240), (58, 231), (54, 222), (53, 217), (55, 212), (52, 209), (52, 201),
-        (53, 197), (48, 191), (47, 184), (44, 177), (43, 170), (45, 165), (44, 156),
+        (90, 272), (88, 272), (86, 266), (81,
+                                          266), (75, 258), (62, 251), (62, 245),
+        (61, 240), (58, 231), (54, 222), (53,
+                                          217), (55, 212), (52, 209), (52, 201),
+        (53, 197), (48, 191), (47, 184), (44,
+                                          177), (43, 170), (45, 165), (44, 156),
         (42, 149), (48, 140), (51, 126)],
     "Colorado": [
         (221, 180), (238, 181), (256, 183), (270, 185), (280, 186),
@@ -124,13 +137,16 @@ state_boundaries = {
         (520, 321), (524, 338), (527, 344), (558, 342), (564, 344), (565, 336),
         (571, 337), (571, 327), (575, 316), (566, 301), (553, 291), (547, 284),
         (538, 280), (538, 274)],
-    "Hawaii": [
-        (224, 444), (221, 456), (233, 456), (236, 446), (224, 444),
-        (252, 460), (255, 466), (262, 466), (258, 457), (252, 460), (272, 466),
-        (269, 469), (278, 471), (278, 468), (273, 466), (287, 478), (294, 479),
-        (292, 474), (287, 473), (282, 472), (282, 476), (287, 477), (298, 486),
-        (296, 493), (294, 496), (296, 504), (298, 511), (304, 508), (312, 503),
-        (316, 499), (311, 494), (306, 489), (298, 486)],
+    "Hawaii": [(224, 444), (221, 456), (233, 456), (236, 446), (224, 444),
+               (252, 460), (255, 466), (262, 466), (258,
+                                                    457), (252, 460), (272, 466),
+               (269, 469), (278, 471), (278, 468), (273,
+                                                    466), (287, 478), (294, 479),
+               (292, 474), (287, 473), (282, 472), (282,
+                                                    476), (287, 477), (298, 486),
+               (296, 493), (294, 496), (296, 504), (298,
+                                                    511), (304, 508), (312, 503),
+               (316, 499), (311, 494), (306, 489), (298, 486)],
     "Idaho": [
         (155, 40), (164, 42), (164, 52), (165, 61), (166, 68), (171, 75),
         (173, 80), (176, 82), (175, 87), (173, 92), (172, 95), (174, 100),
@@ -178,21 +194,27 @@ state_boundaries = {
         (636, 131), (643, 129), (653, 127), (661, 123), (662, 131), (670, 135),
         (677, 135), (669, 140), (665, 140), (658, 136), (637, 140), (636, 131)],
     "Maine": [
-        (662, 118), (664, 106), (670, 102), (675, 99), (675, 94), (684, 88), (688, 86),
-        (693, 80), (691, 74), (688, 74), (687, 70), (682, 67), (677, 52), (672, 46),
-        (663, 48), (660, 46), (656, 53), (654, 68), (653, 78), (649, 85), (658, 115),
+        (662, 118), (664, 106), (670, 102), (675,
+                                             99), (675, 94), (684, 88), (688, 86),
+        (693, 80), (691, 74), (688, 74), (687,
+                                          70), (682, 67), (677, 52), (672, 46),
+        (663, 48), (660, 46), (656, 53), (654,
+                                          68), (653, 78), (649, 85), (658, 115),
         (662, 118)],
     "Michigan": [
         (522, 167), (506, 171), (483, 171), (489, 159), (487, 149), (484, 140),
         (485, 128), (491, 120), (497, 114), (497, 108), (499, 104), (489, 103),
         (482, 107), (475, 108), (469, 117), (466, 108), (444, 102), (440, 98),
-        (459, 84), (462, 86), (458, 92), (470, 95), (476, 99), (493, 92), (497, 96),
+        (459, 84), (462, 86), (458, 92), (470,
+                                          95), (476, 99), (493, 92), (497, 96),
         (505, 96), (509, 101), (499, 103), (506, 108), (515, 112), (517, 121),
         (518, 126), (513, 133), (513, 138), (520, 136), (524, 132), (528, 137),
         (529, 150), (527, 155), (522, 167)],
     "Minnesota": [
-        (363, 63), (382, 62), (384, 57), (387, 57), (389, 65), (399, 70), (405, 67),
-        (415, 73), (425, 76), (430, 73), (440, 75), (419, 95), (415, 103), (413, 110),
+        (363, 63), (382, 62), (384, 57), (387,
+                                          57), (389, 65), (399, 70), (405, 67),
+        (415, 73), (425, 76), (430, 73), (440,
+                                          75), (419, 95), (415, 103), (413, 110),
         (409, 113), (412, 120), (413, 129), (429, 143), (428, 148), (371, 148),
         (371, 122), (367, 116), (370, 111), (366, 82), (363, 79), (363, 63)],
     "Mississippi": [
@@ -214,7 +236,8 @@ state_boundaries = {
         (362, 162), (367, 164), (376, 183), (378, 195), (383, 204), (304, 202),
         (303, 188), (280, 184), (285, 155)],
     "Nevada": [
-        (98, 140), (166, 155), (152, 233), (148, 247), (142, 244), (138, 260), (95, 197),
+        (98, 140), (166, 155), (152, 233), (148,
+                                            247), (142, 244), (138, 260), (95, 197),
         (92, 192), (87, 186), (98, 140)],
     "New Mexico": [
         (213, 242), (250, 247), (287, 251), (284, 286),
@@ -240,7 +263,8 @@ state_boundaries = {
         (621, 251), (625, 251), (629, 249), (629, 244), (623, 241), (628, 238),
         (624, 234)],
     "North Dakota": [
-        (291, 61), (318, 62), (339, 63), (361, 63), (363, 80), (365, 84), (368, 110),
+        (291, 61), (318, 62), (339, 63), (361,
+                                          63), (363, 80), (365, 84), (368, 110),
         (289, 109), (291, 61)],
     "Ohio": [
         (506, 170), (523, 167), (532, 172), (543, 167), (546, 163), (555, 159),
@@ -253,8 +277,10 @@ state_boundaries = {
         (347, 298), (338, 297), (332, 293), (325, 290), (323, 261),
         (289, 259), (288, 251)],
     "Oregon": [
-        (75, 62), (83, 68), (84, 76), (96, 77), (103, 80), (113, 79), (127, 81), (146, 84),
-        (151, 91), (140, 105), (139, 110), (141, 114), (137, 119), (132, 145), (50, 125),
+        (75, 62), (83, 68), (84, 76), (96, 77), (103,
+                                                 80), (113, 79), (127, 81), (146, 84),
+        (151, 91), (140, 105), (139, 110), (141,
+                                            114), (137, 119), (132, 145), (50, 125),
         (51, 113), (63, 90), (69, 73), (75, 62)],
     "Pennsylvania": [
         (562, 155), (565, 158), (615, 147), (621, 154), (620, 167), (627, 174),
@@ -290,7 +316,8 @@ state_boundaries = {
         (168, 155), (199, 160), (199, 175), (221, 179), (212, 240), (153, 231),
         (168, 155)],
     "Vermont": [
-        (625, 95), (644, 91), (647, 99), (644, 102), (642, 117), (642, 127), (635, 130),
+        (625, 95), (644, 91), (647, 99), (644,
+                                          102), (642, 117), (642, 127), (635, 130),
         (634, 121), (630, 117), (625, 95)],
     "Virginia": [
         (625, 233), (591, 241), (552, 246), (535, 245), (548, 233), (554, 235),
@@ -299,7 +326,8 @@ state_boundaries = {
         (620, 227), (625, 227), (625, 233)],
     "Washington": [
         (98, 24), (154, 41), (146, 80), (146, 84), (124, 81), (110, 80), (101, 79),
-        (84, 75), (83, 68), (74, 61), (76, 41), (74, 28), (95, 38), (93, 48), (99, 40),
+        (84, 75), (83, 68), (74, 61), (76, 41), (74,
+                                                 28), (95, 38), (93, 48), (99, 40),
         (98, 24)],
     "West Virginia": [
         (559, 187), (560, 194), (573, 193), (575, 197), (584, 194), (591, 191),
@@ -319,6 +347,9 @@ state_boundaries = {
     ]
 }
 
+# -----------------------------
+# FILES, CONFIG, AND RANKINGS
+# -----------------------------
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 RANKINGS_FILE = os.path.join(SCRIPT_DIR, "rankings.json")
 if not os.access(SCRIPT_DIR, os.W_OK):
@@ -352,7 +383,13 @@ def insert_score(rankings, new_entry):
     return rankings[:10]
 
 
+# -----------------------------
+# FLASHCARD APP (main window and screens)
+# -----------------------------
 class FlashcardApp(tk.Tk):
+    # -----------------------------
+    # APP STARTUP
+    # -----------------------------
     def __init__(self):
         super().__init__()
         self.title("US States Flashcards")
@@ -376,6 +413,9 @@ class FlashcardApp(tk.Tk):
 
         self.show_welcome()
 
+    # -----------------------------
+    # SCREEN HELPERS
+    # -----------------------------
     def clear_screen(self):
         for widget in self.winfo_children():
             widget.destroy()
@@ -385,13 +425,16 @@ class FlashcardApp(tk.Tk):
         if callback is not None:
             self.bind("<Return>", lambda event: callback())
 
+    # -----------------------------
+    # WELCOME SCREEN
+    # -----------------------------
     def show_welcome(self):
         self.clear_screen()
 
         tk.Label(
             self, text="US States Flashcards",
             font=("Georgia", 28, "bold"),
-            bg="#0d1b2a", fg="#e8a020"
+            bg="#0d1b2a", fg="red"
         ).pack(pady=(80, 8))
 
         tk.Label(
@@ -416,7 +459,7 @@ class FlashcardApp(tk.Tk):
             font=("Courier", 14, "bold"),
             width=6,
             bg="#1b2e42",
-            fg="#e8a020",
+            fg="white",
             insertbackground="#e8a020",
             relief="flat",
             bd=4
@@ -425,9 +468,9 @@ class FlashcardApp(tk.Tk):
         entry.focus()
 
         tk.Button(
-            frame, text="Continue",
+            frame, text="Continue to Settings",
             font=("Helvetica", 12),
-            bg="#e8a020", fg="#0d1b2a",
+            bg="#e8a020", fg="Black",
             relief="flat",
             padx=16, pady=8,
             command=self.validate_initials
@@ -435,6 +478,9 @@ class FlashcardApp(tk.Tk):
 
         self.set_return_action(self.validate_initials)
 
+    # -----------------------------
+    # VALIDATE WELCOME INPUT
+    # -----------------------------
     def validate_initials(self):
         initials = self.initials_var.get().strip().upper()
         if 1 <= len(initials) <= 3 and initials.isalpha():
@@ -446,39 +492,30 @@ class FlashcardApp(tk.Tk):
                 "Please enter 1 to 3 letters for your initials."
             )
 
+
+    # -----------------------------
+    # INSTRUCTIONS SCREEN
+    # -----------------------------
     def show_instructions(self):
         self.clear_screen()
-        self.set_return_action(self.show_settings)
+        self.set_return_action(None)
 
         tk.Label(
-            self,
-            text="How to Play",
+            self, text="How to Play",
             font=("Georgia", 24, "bold"),
-            bg="#0d1b2a",
-            fg="#e8a020"
-        ).pack(pady=(30, 10))
-
-        tk.Label(
-            self,
-            text=f"Player: {self.player_initials}",
-            font=("Helvetica", 12),
-            bg="#0d1b2a",
-            fg="#3ec9a7"
-        ).pack(pady=(0, 20))
+            bg="#0d1b2a", fg="red"
+        ).pack(pady=(40,10))
 
         frame = tk.Frame(self, bg="#162534", padx=30, pady=25)
-        frame.pack(padx=60, pady=10, fill="both", expand=False)
+        frame.pack()
 
         instructions = [
-            "1. Choose what information will be shown on each flashcard.",
-            "2. Then choose what information you must answer.",
-            "3. The same item cannot be both shown and answered.",
-            "4. Select at least 1 and at most 3 items in each section.",
-            "5. If Map Location is an answer, click the correct state on the map.",
-            "6. Drop-down answers are worth 1/6 point each.",
-            "7. Text-entry answers are worth 2/6 point each.",
-            "8. You have 300 seconds to finish the session.",
-            "9. Your score and time are saved to the Top 10 Rankings."
+            "Answer as many flashcards as possible before 300 seconds.",
+            "Choose 1–3 items to SHOW and 1–3 different items to ANSWER.",
+            "Shown and answered items cannot overlap.",
+            "Click the state on the map if Map Location is the answer.",
+            "Text answers = 2/6 point | Drop-down = 1/6 point.",
+            "Scores and time appear in the Top‑10 rankings."
         ]
 
         for line in instructions:
@@ -489,37 +526,22 @@ class FlashcardApp(tk.Tk):
                 bg="#162534",
                 fg="white",
                 anchor="w",
-                justify="left",
-                wraplength=900
+                justify="left"
             ).pack(anchor="w", pady=4)
 
-        button_frame = tk.Frame(self, bg="#0d1b2a")
-        button_frame.pack(pady=20)
-
         tk.Button(
-            button_frame,
+            self,
             text="Continue to Settings",
-            font=("Helvetica", 12),
-            bg="#e8a020",
-            fg="#0d1b2a",
+            font=("Helvetica", 12, "bold"),
+            bg="#e8a020", fg="#0d1b2a",
             relief="flat",
-            padx=18,
-            pady=8,
+            padx=16, pady=8,
             command=self.show_settings
-        ).pack(side="left", padx=8)
+        ).pack(pady=20)
 
-        tk.Button(
-            button_frame,
-            text="Back to Welcome",
-            font=("Helvetica", 12),
-            bg="#1b2e42",
-            fg="black",
-            relief="flat",
-            padx=18,
-            pady=8,
-            command=self.show_welcome
-        ).pack(side="left", padx=8)
-
+    # -----------------------------
+    # SETTINGS SCREEN
+    # -----------------------------
     def show_settings(self):
         self.clear_screen()
         self.set_return_action(None)
@@ -527,19 +549,19 @@ class FlashcardApp(tk.Tk):
         tk.Label(
             self, text="Settings",
             font=("Georgia", 24, "bold"),
-            bg="#0d1b2a", fg="#e8a020"
+            bg="#0d1b2a", fg="red"
         ).pack(pady=(30, 4))
 
         tk.Label(
             self, text=f"Player: {self.player_initials}",
             font=("Helvetica", 12),
-            bg="#0d1b2a", fg="#3ec9a7"
+            bg="#0d1b2a", fg="white"
         ).pack(pady=(0, 16))
 
         show_frame = tk.LabelFrame(
-            self, text=" Information Shown on Flashcards",
+            self, text=" What to SHOW on each card ",
             font=("Helvetica", 11),
-            bg="#1b2e42", fg="#e8a020",
+            bg="#1b2e42", fg="red",
             padx=16, pady=10
         )
         show_frame.pack(fill="x", padx=60, pady=6)
@@ -566,9 +588,9 @@ class FlashcardApp(tk.Tk):
             ).pack(anchor="w")
 
         ans_frame = tk.LabelFrame(
-            self, text=" Information You Must Answer ",
+            self, text=" What the USER ANSWERS ",
             font=("Helvetica", 11),
-            bg="#1b2e42", fg="#e8a020",
+            bg="#1b2e42", fg="red",
             padx=16, pady=10
         )
         ans_frame.pack(fill="x", padx=60, pady=6)
@@ -595,9 +617,9 @@ class FlashcardApp(tk.Tk):
             ).pack(anchor="w")
 
         mode_frame = tk.LabelFrame(
-            self, text=" Answer Format ",
+            self, text=" Answer Mode ",
             font=("Helvetica", 11),
-            bg="#1b2e42", fg="#e8a020",
+            bg="#1b2e42", fg="red",
             padx=16, pady=10
         )
         mode_frame.pack(fill="x", padx=60, pady=6)
@@ -643,13 +665,16 @@ class FlashcardApp(tk.Tk):
         ).pack(pady=4)
 
         tk.Button(
-            self, text="Back to Instructions",
+            self, text="Back to Welcome",
             font=("Helvetica", 10),
             bg="#1b2e42", fg="black",
             relief="flat",
-            command=self.show_instructions
+            command=self.show_welcome
         ).pack()
 
+    # -----------------------------
+    # VALIDATE SETTINGS (before quiz starts)
+    # -----------------------------
     def validate_settings(self):
         prompt_keys = []
         answer_keys = []
@@ -701,6 +726,9 @@ class FlashcardApp(tk.Tk):
         self.answer_keys = answer_keys
         self.start_session()
 
+    # -----------------------------
+    # SESSION AND TIMER
+    # -----------------------------
     def start_session(self):
         self.score = 0.0
         self.elapsed = 0
@@ -733,6 +761,9 @@ class FlashcardApp(tk.Tk):
 
         self.timer_job = self.after(1000, self.update_timer)
 
+    # -----------------------------
+    # FLASHCARD SCREEN (one question)
+    # -----------------------------
     def show_flashcard(self):
         self.clear_screen()
         self.answer_widgets = {}
@@ -760,14 +791,14 @@ class FlashcardApp(tk.Tk):
             top_frame,
             text=f"Score: {self.score:.2f}",
             font=("Helvetica", 13, "bold"),
-            bg="#0d1b2a", fg="#3ec9a7"
+            bg="#0d1b2a", fg="white"
         ).grid(row=0, column=1, padx=15)
 
         self.timer_label = tk.Label(
             top_frame,
             text=f"Time Left: {TIME_LIMIT - self.elapsed}s",
             font=("Helvetica", 13, "bold"),
-            bg="#0d1b2a", fg="#e8a020"
+            bg="#0d1b2a", fg="white"
         )
         self.timer_label.grid(row=0, column=2, padx=15)
 
@@ -784,7 +815,7 @@ class FlashcardApp(tk.Tk):
             left_frame,
             text="Flashcard Prompt",
             font=("Georgia", 18, "bold"),
-            bg="#162534", fg="#e8a020"
+            bg="#162534", fg="White"
         ).pack(pady=(0, 12))
 
         if "map" in self.prompt_keys or "map" in self.answer_keys:
@@ -798,7 +829,8 @@ class FlashcardApp(tk.Tk):
             self.canvas.pack(pady=10)
 
             self.draw_map(
-                highlight_code=current_code if "map" in self.prompt_keys else None
+                highlight_code=current_code if "map" in self.prompt_keys else None,
+                show_labels=self.should_show_map_labels()
             )
 
             if "map" in self.answer_keys:
@@ -832,7 +864,7 @@ class FlashcardApp(tk.Tk):
             right_frame,
             text="Your Answer",
             font=("Georgia", 18, "bold"),
-            bg="#162534", fg="#e8a020"
+            bg="#162534", fg="white"
         ).pack(pady=(0, 12))
 
         for key in self.answer_keys:
@@ -879,7 +911,7 @@ class FlashcardApp(tk.Tk):
         tk.Button(
             button_frame,
             text="Submit Answer",
-            font=("Helvetica", 12),
+            font=("Helvetica", 12, "bold"),
             bg="#e8a020", fg="#0d1b2a",
             relief="flat",
             padx=18, pady=8,
@@ -890,12 +922,15 @@ class FlashcardApp(tk.Tk):
             button_frame,
             text="End Session",
             font=("Helvetica", 12),
-            bg="#1b2e42", fg="Black",
+            bg="#1b2e42", fg="black",
             relief="flat",
             padx=18, pady=8,
             command=self.finish_session
         ).pack(side="left", padx=8)
 
+    # -----------------------------
+    # MAP: GEOMETRY HELPERS (scale, polygons, label placement)
+    # -----------------------------
     def get_scaled_points(self, points, scale, x_offset, y_offset):
         scaled = []
         for x, y in points:
@@ -918,35 +953,50 @@ class FlashcardApp(tk.Tk):
 
     def point_in_polygon(self, x, y, points):
         inside = False
-        j = len(points) - 1
-        for i in range(len(points)):
-            xi, yi = points[i]
-            xj, yj = points[j]
-            intersects = ((yi > y) != (yj > y))
+        previous_idx = len(points) - 1
+        for current_idx in range(len(points)):
+            curr_x, curr_y = points[current_idx]
+            prev_x, prev_y = points[previous_idx]
+            intersects = ((curr_y > y) != (prev_y > y))
             if intersects:
-                x_intersection = (xj - xi) * (y - yi) / (yj - yi + 1e-9) + xi
+                x_intersection = (prev_x - curr_x) * \
+                    (y - curr_y) / (prev_y - curr_y + 1e-9) + curr_x
                 if x < x_intersection:
                     inside = not inside
-            j = i
+            previous_idx = current_idx
         return inside
 
-    def point_to_segment_distance_sq(self, px, py, ax, ay, bx, by):
-        abx = bx - ax
-        aby = by - ay
-        apx = px - ax
-        apy = py - ay
-        denom = (abx * abx) + (aby * aby)
-        if denom == 0:
-            dx = px - ax
-            dy = py - ay
-            return (dx * dx) + (dy * dy)
-        t = ((apx * abx) + (apy * aby)) / denom
-        t = max(0.0, min(1.0, t))
-        cx = ax + (t * abx)
-        cy = ay + (t * aby)
-        dx = px - cx
-        dy = py - cy
-        return (dx * dx) + (dy * dy)
+    def point_to_segment_distance_sq(
+        self,
+        point_x,
+        point_y,
+        seg_start_x,
+        seg_start_y,
+        seg_end_x,
+        seg_end_y
+    ):
+        segment_dx = seg_end_x - seg_start_x
+        segment_dy = seg_end_y - seg_start_y
+        start_to_point_dx = point_x - seg_start_x
+        start_to_point_dy = point_y - seg_start_y
+
+        segment_len_sq = (segment_dx * segment_dx) + (segment_dy * segment_dy)
+        if segment_len_sq == 0:
+            delta_x = point_x - seg_start_x
+            delta_y = point_y - seg_start_y
+            return (delta_x * delta_x) + (delta_y * delta_y)
+
+        projection_ratio = (
+            (start_to_point_dx * segment_dx) +
+            (start_to_point_dy * segment_dy)
+        ) / segment_len_sq
+        projection_ratio = max(0.0, min(1.0, projection_ratio))
+
+        closest_x = seg_start_x + (projection_ratio * segment_dx)
+        closest_y = seg_start_y + (projection_ratio * segment_dy)
+        delta_x = point_x - closest_x
+        delta_y = point_y - closest_y
+        return (delta_x * delta_x) + (delta_y * delta_y)
 
     def get_label_point(self, points):
         min_x = min(x for x, y in points)
@@ -954,6 +1004,7 @@ class FlashcardApp(tk.Tk):
         min_y = min(y for x, y in points)
         max_y = max(y for x, y in points)
 
+        # Start at polygon centroid.
         centroid_x = sum(x for x, y in points) / len(points)
         centroid_y = sum(y for x, y in points) / len(points)
         best_x = (min_x + max_x) / 2
@@ -964,6 +1015,7 @@ class FlashcardApp(tk.Tk):
         if self.point_in_polygon(centroid_x, centroid_y, points):
             candidates.append((centroid_x, centroid_y))
 
+        # Grid-search points inside the polygon and pick the most interior point.
         width = max_x - min_x
         height = max_y - min_y
         step = max(2.0, min(width, height) / 12.0)
@@ -980,23 +1032,34 @@ class FlashcardApp(tk.Tk):
         if not candidates:
             return best_x, best_y
 
-        for cx, cy in candidates:
+        for candidate_x, candidate_y in candidates:
             min_dist_sq = float("inf")
-            for i in range(len(points)):
-                ax, ay = points[i]
-                bx, by = points[(i + 1) % len(points)]
+            for point_idx in range(len(points)):
+                seg_start_x, seg_start_y = points[point_idx]
+                seg_end_x, seg_end_y = points[(point_idx + 1) % len(points)]
                 dist_sq = self.point_to_segment_distance_sq(
-                    cx, cy, ax, ay, bx, by)
+                    candidate_x,
+                    candidate_y,
+                    seg_start_x,
+                    seg_start_y,
+                    seg_end_x,
+                    seg_end_y
+                )
                 if dist_sq < min_dist_sq:
                     min_dist_sq = dist_sq
             if min_dist_sq > best_score:
                 best_score = min_dist_sq
-                best_x = cx
-                best_y = cy
+                best_x, best_y = candidate_x, candidate_y
 
         return best_x, best_y
 
-    def draw_map(self, highlight_code=None, selected_code=None):
+    # -----------------------------
+    # MAP: DRAW STATES, LABELS, AND CALLOUTS
+    # -----------------------------
+    def should_show_map_labels(self):
+        return not ("map" in self.prompt_keys and "initials" in self.answer_keys)
+
+    def draw_map(self, highlight_code=None, selected_code=None, show_labels=True):
         self.canvas.delete("all")
         self.state_items = {}
         state_label_points = {}
@@ -1008,6 +1071,14 @@ class FlashcardApp(tk.Tk):
         map_width = map_right - map_left
         map_height = map_bottom - map_top
 
+        # Subtle depth for the map panel.
+        self.canvas.create_rectangle(
+            map_left + 3, map_top + 3, map_right + 3, map_bottom + 3,
+            fill="#d9e6f2",
+            outline="",
+            width=0
+        )
+
         self.canvas.create_rectangle(
             map_left, map_top, map_right, map_bottom,
             fill="#f8fbff",
@@ -1015,6 +1086,7 @@ class FlashcardApp(tk.Tk):
             width=2
         )
 
+        # Fit all states into the visible map area and center them.
         all_points = []
         for info in STATES.values():
             state_name = info["name"]
@@ -1037,8 +1109,10 @@ class FlashcardApp(tk.Tk):
         fit_height = max(1, map_height - (2 * padding))
         scale = min(fit_width / src_width, fit_height / src_height)
 
-        x_offset = map_left + (map_width - (src_width * scale)) / 2 - (min_x * scale)
-        y_offset = map_top + (map_height - (src_height * scale)) / 2 - (min_y * scale)
+        x_offset = map_left + \
+            (map_width - (src_width * scale)) / 2 - (min_x * scale)
+        y_offset = map_top + \
+            (map_height - (src_height * scale)) / 2 - (min_y * scale)
 
         for code, info in STATES.items():
             state_name = info["name"]
@@ -1064,6 +1138,9 @@ class FlashcardApp(tk.Tk):
                 fill_color = "#90be6d"
                 outline_color = "#2d6a4f"
 
+            flat_points = []
+            for x, y in points:
+                flat_points.extend([x, y])
             polygons = self.split_closed_polygons(points)
             for polygon_points in polygons:
                 poly_flat = []
@@ -1085,7 +1162,7 @@ class FlashcardApp(tk.Tk):
                     poly_flat,
                     fill=fill_color,
                     outline=outline_color,
-                    width=2,
+                    width=2.2,
                     smooth=False,
                     tags=("state", code)
                 )
@@ -1095,7 +1172,7 @@ class FlashcardApp(tk.Tk):
                         poly_flat,
                         fill="",
                         outline="red",
-                        width=3,
+                        width=3.2,
                         smooth=False
                     )
 
@@ -1109,60 +1186,72 @@ class FlashcardApp(tk.Tk):
             width = max_x - min_x
             height = max_y - min_y
 
-            if width >= 22 and height >= 14:
+            if show_labels and width >= 22 and height >= 14:
                 cx, cy = self.get_label_point(points)
                 state_label_points[code] = (cx, cy)
 
-                if "initials" not in self.answer_keys:
-                    font_size = 8
-                    if width > 55 and height > 28:
-                        font_size = 9
+                font_size = 8
+                if width > 55 and height > 28:
+                    font_size = 9
 
-                    self.canvas.create_text(
-                        cx,
-                        cy,
-                        text=code,
-                        font=("Arial", font_size, "bold"),
-                        fill="#0d1b2a"
-                    )
-
-        callout_states = {
-            "NH": (40, -18),
-            "RI": (52, 6),
-            "CT": (48, 20),
-            "NJ": (42, 30),
-            "DE": (38, 42),
-        }
-
-        for code, (dx, dy) in callout_states.items():
-            if code not in STATES:
-                continue
-            if code not in state_label_points:
-                state_name = STATES[code]["name"]
-                if state_name not in state_boundaries:
-                    continue
-                base_points = self.get_scaled_points(
-                    state_boundaries[state_name],
-                    scale=scale,
-                    x_offset=x_offset,
-                    y_offset=y_offset
+                self.canvas.create_text(
+                    cx + 0.7,
+                    cy + 0.7,
+                    text=code,
+                    font=("Arial", font_size, "bold"),
+                    fill="#f8fbff"
                 )
-                ax, ay = self.get_label_point(base_points)
-            else:
-                ax, ay = state_label_points[code]
+                self.canvas.create_text(
+                    cx,
+                    cy,
+                    text=code,
+                    font=("Arial", font_size, "bold"),
+                    fill="#0d1b2a"
+                )
 
-            tx = ax + dx
-            ty = ay + dy
-            text_anchor = "w" if dx >= 0 else "e"
-            line_end_x = tx - 6 if dx >= 0 else tx + 6
+        if show_labels:
+            callout_states = {
+                "NH": (40, -18),
+                "RI": (52, 6),
+                "CT": (48, 20),
+                "NJ": (42, 30),
+                "DE": (38, 42),
+            }
+            for code, (dx, dy) in callout_states.items():
+                if code not in STATES:
+                    continue
+                if code not in state_label_points:
+                    state_name = STATES[code]["name"]
+                    if state_name not in state_boundaries:
+                        continue
+                    base_points = self.get_scaled_points(
+                        state_boundaries[state_name],
+                        scale=scale,
+                        x_offset=x_offset,
+                        y_offset=y_offset
+                    )
+                    ax, ay = self.get_label_point(base_points)
+                else:
+                    ax, ay = state_label_points[code]
 
-            self.canvas.create_line(
-                ax, ay, line_end_x, ty,
-                fill="#1f3b5b",
-                width=1.5
-            )
+                tx = ax + dx
+                ty = ay + dy
+                text_anchor = "w" if dx >= 0 else "e"
+                line_end_x = tx - 6 if dx >= 0 else tx + 6
 
-            if "initials" not in self.answer_keys:
+                self.canvas.create_line(
+                    ax, ay, line_end_x, ty,
+                    fill="#1f3b5b",
+                    width=1.5
+                )
+                self.canvas.create_text(
+                    tx + 0.7,
+                    ty + 0.7,
+                    text=code,
+                    anchor=text_anchor,
+                    font=("Arial", 8, "bold"),
+                    fill="#f8fbff"
+                )
                 self.canvas.create_text(
                     tx,
                     ty,
@@ -1172,6 +1261,9 @@ class FlashcardApp(tk.Tk):
                     fill="#0d1b2a"
                 )
 
+    # -----------------------------
+    # MAP: CLICK TO SELECT A STATE
+    # -----------------------------
     def map_click(self, event):
         items = self.canvas.find_overlapping(
             event.x, event.y, event.x, event.y)
@@ -1183,10 +1275,14 @@ class FlashcardApp(tk.Tk):
                     self.selected_map_answer = tag
                     self.draw_map(
                         highlight_code=self.deck[self.current_index] if "map" in self.prompt_keys else None,
-                        selected_code=self.selected_map_answer
+                        selected_code=self.selected_map_answer,
+                        show_labels=self.should_show_map_labels()
                     )
                     return
 
+    # -----------------------------
+    # ANSWERS: DROPDOWN OPTIONS
+    # -----------------------------
     def make_choices(self, key, current_code):
         correct_state = STATES[current_code]
 
@@ -1207,6 +1303,9 @@ class FlashcardApp(tk.Tk):
         random.shuffle(choices)
         return choices
 
+    # -----------------------------
+    # ANSWERS: CHECK, SCORE, AND ADVANCE
+    # -----------------------------
     def check_answer(self):
         current_code = self.deck[self.current_index]
         current_state = STATES[current_code]
@@ -1237,6 +1336,9 @@ class FlashcardApp(tk.Tk):
         self.current_index += 1
         self.show_flashcard()
 
+    # -----------------------------
+    # END SESSION AND SAVE SCORE
+    # -----------------------------
     def finish_session(self):
         if self.timer_job:
             self.after_cancel(self.timer_job)
@@ -1256,6 +1358,9 @@ class FlashcardApp(tk.Tk):
 
         self.show_rankings()
 
+    # -----------------------------
+    # RANKINGS SCREEN
+    # -----------------------------
     def show_rankings(self):
         self.clear_screen()
         self.set_return_action(None)
@@ -1263,7 +1368,7 @@ class FlashcardApp(tk.Tk):
         tk.Label(
             self, text="Top 10 Rankings",
             font=("Georgia", 24, "bold"),
-            bg="#0d1b2a", fg="#e8a020"
+            bg="#0d1b2a", fg="white"
         ).pack(pady=(30, 10))
 
         rankings = load_rankings()
@@ -1277,7 +1382,7 @@ class FlashcardApp(tk.Tk):
                 table_frame,
                 text=header,
                 font=("Helvetica", 12, "bold"),
-                bg="#162534", fg="#3ec9a7",
+                bg="#162534", fg="White",
                 width=12
             ).grid(row=0, column=col, padx=4, pady=4)
 
@@ -1329,5 +1434,8 @@ class FlashcardApp(tk.Tk):
         ).pack(pady=4)
 
 
+# -----------------------------
+# RUN APP
+# -----------------------------
 app = FlashcardApp()
 app.mainloop()

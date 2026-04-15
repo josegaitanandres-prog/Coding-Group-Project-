@@ -492,19 +492,19 @@ class FlashcardApp(tk.Tk):
                 "Please enter 1 to 3 letters for your initials."
             )
 
-
     # -----------------------------
     # INSTRUCTIONS SCREEN
     # -----------------------------
+
     def show_instructions(self):
         self.clear_screen()
-        self.set_return_action(None)
+        self.set_return_action(self.show_settings)
 
         tk.Label(
             self, text="How to Play",
             font=("Georgia", 24, "bold"),
             bg="#0d1b2a", fg="red"
-        ).pack(pady=(40,10))
+        ).pack(pady=(40, 10))
 
         frame = tk.Frame(self, bg="#162534", padx=30, pady=25)
         frame.pack()
@@ -1057,7 +1057,12 @@ class FlashcardApp(tk.Tk):
     # MAP: DRAW STATES, LABELS, AND CALLOUTS
     # -----------------------------
     def should_show_map_labels(self):
-        return not ("map" in self.prompt_keys and "initials" in self.answer_keys)
+        # State abbreviations on the map would duplicate the prompt or spoil the answer.
+        if "map" in self.prompt_keys and "initials" in self.answer_keys:
+            return False
+        if "initials" in self.prompt_keys and "map" in self.answer_keys:
+            return False
+        return True
 
     def draw_map(self, highlight_code=None, selected_code=None, show_labels=True):
         self.canvas.delete("all")

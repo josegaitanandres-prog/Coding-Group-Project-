@@ -1076,20 +1076,6 @@ class FlashcardApp(tk.Tk):
         map_width = map_right - map_left
         map_height = map_bottom - map_top
 
-        # Subtle depth for the map panel.
-        self.canvas.create_rectangle(
-            map_left + 3, map_top + 3, map_right + 3, map_bottom + 3,
-            fill="#d9e6f2",
-            outline="",
-            width=0
-        )
-
-        self.canvas.create_rectangle(
-            map_left, map_top, map_right, map_bottom,
-            fill="#f8fbff",
-            outline="#c7d9ea",
-            width=2
-        )
 
         # Fit all states into the visible map area and center them.
         all_points = []
